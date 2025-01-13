@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Card = styled.div<{
+export const Card = styled.li<{
   $bgSrc?: string;
   $aspectRatio?: string | number;
 }>`

@@ -12,11 +12,10 @@ export const Mansory = ({ photos }: Props) => {
   return (
     <Container ref={ref}>
       <Gallery>
-        {photos.map((photo, index) => {
+        {photos.map((photo) => {
           return (
             <GalleryItem
               key={photo.id}
-              index={index}
               photo={photo}
               getContainerElement={() => ref.current}
             />

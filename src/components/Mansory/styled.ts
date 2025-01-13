@@ -9,7 +9,8 @@ export const Container = styled.div`
   background-color: white;
 `;
 
-export const Gallery = styled.div`
+export const Gallery = styled.ul`
+  list-style: none;
   columns: 1;
   gap: 8px;
   width: 100%;
