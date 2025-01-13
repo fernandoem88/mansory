@@ -15,6 +15,7 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
+      <link rel="preconnect" href="https://images.pexels.com"></link>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
