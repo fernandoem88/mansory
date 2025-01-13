@@ -5,8 +5,8 @@ export const Card = styled.div<{
   $aspectRatio?: string | number;
 }>`
   position: relative;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
   overflow: hidden;
   ${(p) => (p.$aspectRatio ? `aspect-ratio: ${p.$aspectRatio};` : "")}
   background-image: ${({ $bgSrc }) => {
@@ -16,6 +16,14 @@ export const Card = styled.div<{
   }};
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media screen and (min-width: 787px) {
+    margin-bottom: 12px;
+  }
+
+  @media screen and (min-width: 994px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const Img = styled.img`

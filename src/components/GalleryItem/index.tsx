@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const GalleryItem = ({ photo, index, getContainerElement }: Props) => {
-  const [ref, inView] = useInView<null>({ getContainerElement, once: true });
+  const [ref, inView] = useInView<null>({ getContainerElement });
 
   return (
     <Card
