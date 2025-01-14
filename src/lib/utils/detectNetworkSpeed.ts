@@ -22,9 +22,12 @@ const getConnectionType = () => {
 };
 
 export const detectNetworkSpeed = (): ConnectionType => {
-  const connectionType = getConnectionType();
+  const connectionType = getConnectionType()?.toLowerCase();
 
-  if (!connectionType || connectionType.includes("2g")) return "very-slow";
+  // by default we can consider it fast
+  if (!connectionType) return "fast";
+
+  if (connectionType.includes("2g")) return "very-slow";
   if (connectionType.includes("3g")) return "slow";
   if (connectionType.includes("4g")) return "fast";
 

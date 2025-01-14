@@ -5,14 +5,14 @@ export const Card = styled.li<{
   $aspectRatio?: string | number;
 }>`
   position: relative;
+  display: flex;
   margin-bottom: 8px;
   border-radius: 8px;
   overflow: hidden;
   ${(p) => (p.$aspectRatio ? `aspect-ratio: ${p.$aspectRatio};` : "")}
   background-image: ${({ $bgSrc }) => {
     if ($bgSrc) return `url(${$bgSrc})`;
-    return css`radial-gradient(circle, #d4d4d4, #ffffff, #d4d4d4
-      );`;
+    return css`linear-gradient(to bottom, #d4d4d4, #ffffff, #d4d4d4);`;
   }};
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,6 +24,17 @@ export const Card = styled.li<{
   @media screen and (min-width: 994px) {
     margin-bottom: 16px;
   }
+`;
+
+export const CardButton = styled.button`
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  align-items: stretch;
+  border: none;
 `;
 
 export const Img = styled.img`
