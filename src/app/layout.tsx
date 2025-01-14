@@ -18,6 +18,7 @@ export default function RootLayout({ children }: Props) {
       <link rel="preconnect" href="https://images.pexels.com"></link>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <div id="modal-root" />
       </body>
     </html>
   );
