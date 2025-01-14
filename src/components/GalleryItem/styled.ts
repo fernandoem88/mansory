@@ -1,3 +1,4 @@
+import { BREAK_POINTS } from "@/lib/theme";
 import styled, { css } from "styled-components";
 
 export const Card = styled.li<{
@@ -17,11 +18,11 @@ export const Card = styled.li<{
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media screen and (min-width: 787px) {
+  @media screen and (min-width: ${BREAK_POINTS.md}px) {
     margin-bottom: 12px;
   }
 
-  @media screen and (min-width: 994px) {
+  @media screen and (min-width: ${BREAK_POINTS.lg}px) {
     margin-bottom: 16px;
   }
 `;
