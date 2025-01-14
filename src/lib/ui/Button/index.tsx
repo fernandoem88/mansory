@@ -12,6 +12,7 @@ interface Props extends ButtonRootProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   title?: string;
+  type?: "button" | "reset" | "submit";
 }
 
 export const UiButton = forwardRef(function UiButtonWithRef(

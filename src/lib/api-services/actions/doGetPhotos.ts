@@ -29,7 +29,11 @@ export const doGetPhotos = async ({
     },
   });
 
-  const data: ResponseSuccess = await response.json();
+  const data = await response.json();
 
-  return data;
+  if ("code" in data) {
+    throw new Error(`${data.status} Error: ${data.code}`);
+  }
+
+  return data as ResponseSuccess;
 };

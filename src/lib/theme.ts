@@ -4,7 +4,7 @@ export const BREAK_POINTS = {
   md: 767,
   lg: 992,
   xl: 1200,
-};
+} as const;
 
 export const FONT_SIZES = {
   caption: "10px",
