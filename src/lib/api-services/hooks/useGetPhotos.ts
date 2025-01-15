@@ -2,7 +2,7 @@ import useSWRInfinite from "swr/infinite";
 import { doGetPhotos } from "../actions/doGetPhotos";
 import { ResponseSuccess } from "@/typings";
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 25;
 
 export const useGetPhotos = (query: string) => {
   const swr = useSWRInfinite((index, previous?: ResponseSuccess) => {

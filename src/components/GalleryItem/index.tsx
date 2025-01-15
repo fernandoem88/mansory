@@ -15,8 +15,8 @@ export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
     margin: "50px 0px",
   });
   const { alt, width, height, src } = photo;
-  const aspectRatio = width / height;
-  const reverseRatio = 1 / aspectRatio;
+  const aspectRatio = +(width / height).toFixed(2);
+  const reverseRatio = +(1 / aspectRatio).toFixed(2);
 
   return (
     <Card

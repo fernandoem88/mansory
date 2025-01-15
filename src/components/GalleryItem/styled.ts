@@ -9,10 +9,9 @@ export const Card = styled.li<{
   break-inside: avoid;
   position: relative;
   display: flex;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   border-radius: 8px;
   overflow: hidden;
-
   ${(p) => `aspect-ratio: ${p.$aspectRatio};`}
   ${(p) => `grid-row: span ${p.$rowSpan};`}
 
@@ -24,12 +23,12 @@ export const Card = styled.li<{
   background-size: cover;
 
   @media screen and (min-width: ${BREAK_POINTS.md}px) {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
-  @media screen and (min-width: ${BREAK_POINTS.lg}px) {
-    margin-bottom: 16px;
-  }
+  /* @media screen and (min-width: ${BREAK_POINTS.lg}px) {
+    margin-bottom: 12px;
+  } */
 `;
 
 export const CardButton = styled.button`

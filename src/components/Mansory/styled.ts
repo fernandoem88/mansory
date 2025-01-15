@@ -10,14 +10,12 @@ export const Container = styled.div`
 `;
 
 export const Gallery = styled.ul`
-  --mansory-auto-row: 10px;
   list-style: none;
   grid-template-columns: 1fr;
   column-gap: 12px;
   width: 100%;
   padding: 8px;
   display: grid;
-  grid-auto-rows: var(--auto-row);
   @media screen and (min-width: ${BREAK_POINTS.sm}px) {
     grid-template-columns: repeat(2, 1fr);
   }
