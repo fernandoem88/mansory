@@ -3,14 +3,18 @@ import styled, { css } from "styled-components";
 
 export const Card = styled.li<{
   $bgSrc?: string;
-  $aspectRatio?: string | number;
+  $aspectRatio: number;
+  $rowSpan: number;
 }>`
+  break-inside: avoid;
   position: relative;
   display: flex;
   margin-bottom: 8px;
   border-radius: 8px;
   overflow: hidden;
-  ${(p) => (p.$aspectRatio ? `aspect-ratio: ${p.$aspectRatio};` : "")}
+  ${(p) => `aspect-ratio: ${p.$aspectRatio};`}
+  ${(p) => `grid-row: span ${p.$rowSpan};`};
+
   background-image: ${({ $bgSrc }) => {
     if ($bgSrc) return `url(${$bgSrc})`;
     return css`linear-gradient(to bottom, #d4d4d4, #ffffff, #d4d4d4);`;

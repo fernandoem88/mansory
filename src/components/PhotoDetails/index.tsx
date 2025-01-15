@@ -2,9 +2,9 @@ import type { PhotoItem } from "@/typings";
 import { UiModalHeader } from "../../lib/ui/ModalHeader";
 import { UiModalContent } from "../../lib/ui/ModalContent";
 import { UiModalFooter } from "../../lib/ui/ModalFooter";
-import { FONT_SIZES } from "@/lib/theme";
 import { UiButton } from "../../lib/ui/Button";
 import { getDefaultPhotoSrc } from "@/lib/utils/getDefaultPhotoSrc";
+import { CloseBtnText, DetailsFooter, Img, ImgWrapper } from "./styled";
 
 interface Props {
   photo: PhotoItem;
@@ -26,57 +26,32 @@ export const PhotoDetails = ({ photo, onClose }: Props) => {
             rounded
             onClick={() => onClose?.()}
           >
-            <div style={{ fontSize: 24, fontWeight: 500 }}>X</div>
+            <CloseBtnText>X</CloseBtnText>
           </UiButton>
         }
       />
       <UiModalContent>
-        <div
-          style={{
-            aspectRatio: width / height,
-            height: "100%",
-            width: "auto",
-            display: "flex",
-            justifyContent: "center",
-            margin: "auto",
-            backgroundImage: `url(${getDefaultPhotoSrc(src)})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            borderRadius: 8,
-            overflow: "hidden",
-          }}
+        <ImgWrapper
+          $aspectRatio={width / height}
+          $bgSrc={getDefaultPhotoSrc(src)}
         >
-          {/* eslint-disable-next-line */}
-          <img
+          <Img
             src={src.original}
             alt={alt}
             loading="lazy"
-            style={{
-              width: "100%",
-              height: "auto",
-              aspectRatio: photo.width / photo.height,
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
+            $aspectRatio={width / height}
           />
-        </div>
+        </ImgWrapper>
       </UiModalContent>
       <UiModalFooter>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 4,
-          }}
-        >
-          <p style={{ fontSize: FONT_SIZES.body1 }}>{alt}</p>
-          <p style={{ fontSize: FONT_SIZES.h6 }}>
+        <DetailsFooter>
+          <p>{alt}</p>
+          <p>
             <a href={photographer_url} target="_blank">
               by {photographer}
             </a>
           </p>
-        </div>
+        </DetailsFooter>
       </UiModalFooter>
     </>
   );

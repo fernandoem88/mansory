@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, useCallback, RefObject } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  RefObject,
+  useTransition,
+} from "react";
 
 interface Props {
   initiallyInView?: boolean;
@@ -21,20 +28,24 @@ export const useInView = <T extends Element | null = HTMLElement>({
 }: Props): [targetRef: RefObject<T | null>, isInView: boolean] => {
   const [isInView, setIsInView] = useState(initiallyInView);
   const targetRef = useRef<T | null>(null);
-  const onChangeRef = useRef((inView: boolean) => onInViewChange?.(inView));
-  const getContainerRef = useRef(() => getContainerElement?.());
+  const [, setTransition] = useTransition();
+  const onChangeRef = useRef(onInViewChange);
+  onChangeRef.current = onInViewChange;
+  const getContainerRef = useRef(getContainerElement);
+  getContainerRef.current = getContainerElement;
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       const { isIntersecting } = entries[0];
       setIsInView((isInView) => {
         if (isIntersecting === isInView) return isIntersecting;
-
-        onChangeRef.current?.(isIntersecting);
         if (once && isIntersecting) {
           observer.disconnect();
         }
         return isIntersecting;
+      });
+      setTransition(() => {
+        onChangeRef.current?.(isIntersecting);
       });
     },
     [once]

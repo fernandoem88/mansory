@@ -10,25 +10,24 @@ export const Container = styled.div`
 `;
 
 export const Gallery = styled.ul`
+  --mansory-auto-row: 10px;
   list-style: none;
-  columns: 1;
-  gap: 8px;
+  grid-template-columns: 1fr;
+  column-gap: 12px;
   width: 100%;
-  /* background-color: white; */
   padding: 8px;
+  display: grid;
+  grid-auto-rows: var(--auto-row);
   @media screen and (min-width: ${BREAK_POINTS.sm}px) {
-    columns: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (min-width: ${BREAK_POINTS.md}px) {
-    columns: 3;
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
     padding: 12px;
   }
 
   @media screen and (min-width: ${BREAK_POINTS.lg}px) {
-    columns: 4;
-    gap: 16px;
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
