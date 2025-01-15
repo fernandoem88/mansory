@@ -1,6 +1,6 @@
 import { Container, Gallery, MessageText } from "./styled";
 import type { PhotoItem } from "@/typings";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { GalleryItem } from "../GalleryItem";
 import { LoadMore } from "../LoadMore";
 
@@ -26,6 +26,8 @@ export const Mansory = ({
   const noItems = !photos.length;
   const isMessageShown = isLoading || !!error || noItems;
 
+  const getContainer = useCallback(() => ref.current, []);
+
   return (
     <Container ref={ref}>
       {isMessageShown && (
@@ -40,16 +42,13 @@ export const Mansory = ({
               <GalleryItem
                 key={`${photo.id}_${index}`}
                 photo={photo}
-                getContainerElement={() => ref.current}
-                onClick={() => onOpenDetails(photo)}
+                getContainerElement={getContainer}
+                onClick={onOpenDetails}
               />
             );
           })}
           {hasMorePages && !isLoading && (
-            <LoadMore
-              getContainerElement={() => ref.current}
-              onClick={onLoadMore}
-            />
+            <LoadMore getContainerElement={getContainer} onClick={onLoadMore} />
           )}
         </Gallery>
       )}
