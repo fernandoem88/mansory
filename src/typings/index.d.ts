@@ -27,4 +27,6 @@ export interface PhotoSrc {
   medium: string;
   small: string;
   tiny: sring;
+  portrait: string;
+  landscape: string;
 }

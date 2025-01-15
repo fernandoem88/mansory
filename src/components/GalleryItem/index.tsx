@@ -10,13 +10,13 @@ interface Props {
 }
 
 export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
-  const [ref, inView] = useInView<null>({
+  const [ref, inView] = useInView<HTMLLIElement>({
     getContainerElement,
-    margin: "80px 0px",
+    margin: "50px 0px",
   });
-  const { width, height } = photo;
+  const { alt, width, height, src } = photo;
   const aspectRatio = width / height;
-  const reverseRatio = 1 / aspectRatio; // height / width;
+  const reverseRatio = 1 / aspectRatio;
 
   return (
     <Card
@@ -24,12 +24,13 @@ export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
       $aspectRatio={aspectRatio}
       $rowSpan={Math.ceil(reverseRatio * 10)}
       data-inview={inView ? "true" : undefined}
+      data-testid="mansory-card"
     >
       {inView && (
         <CardButton onClick={onClick}>
           <Img
-            alt={photo.alt}
-            src={getDefaultPhotoSrc(photo.src)}
+            alt={alt}
+            src={getDefaultPhotoSrc(src)}
             loading="lazy"
             width={width}
             height={height}

@@ -1,4 +1,5 @@
 import { useInView } from "@/hooks/useInView";
+import { LoadMoreWrapper } from "./styled";
 
 interface Props {
   getContainerElement: () => HTMLElement | null;
@@ -15,16 +16,6 @@ export const LoadMore = ({ getContainerElement, onClick }: Props) => {
   });
 
   return (
-    <div
-      ref={ref}
-      style={{
-        display: "flex",
-        padding: 4,
-        justifyContent: "center",
-        gridColumn: "1 / -1",
-      }}
-    >
-      {inView ? "Loading..." : "not loading"}
-    </div>
+    <LoadMoreWrapper ref={ref}>{inView ? "Loading..." : ""}</LoadMoreWrapper>
   );
 };
