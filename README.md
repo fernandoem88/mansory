@@ -1,6 +1,4 @@
-Here’s a more polished version of your README file:
-
----
+![mansory](./assests/mansory.png)
 
 # Masonry Project with CSS Grid
 
