@@ -54,6 +54,10 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 - Built using **CSS Grid** with a dynamic, responsive layout.
 - The grid adjusts column widths based on breakpoints using `grid-template-columns`.
 - Each card automatically spans rows based on its aspect ratio:
+  - The `AspectRatio` is calculated as:
+  ```js
+  width / height;
+  ```
   - The `reverseAspectRatio` is calculated as:
     ```js
     Math.ceil(height / width) * offset;
@@ -116,7 +120,3 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 - **Breakpoints** dynamically adjust the number of columns for optimal viewing on different screen sizes.
 - **Virtualization** ensures only visible items are fully rendered, reducing memory usage.
 - **Offset Adjustment** allows for fine-tuning row heights, offering design flexibility.
-
----
-
-This project serves as an excellent example of combining modern CSS techniques with React for creating efficient and visually appealing UI components. Happy coding! 🚀
