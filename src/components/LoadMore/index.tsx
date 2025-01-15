@@ -9,8 +9,8 @@ interface Props {
 export const LoadMore = ({ getContainerElement, onClick }: Props) => {
   const [ref, inView] = useInView<null>({
     getContainerElement,
-    onInViewChange: (isInView) => {
-      if (!isInView) return;
+    onChange: (intersecting) => {
+      if (!intersecting) return;
       onClick?.();
     },
   });

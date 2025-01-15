@@ -1,71 +1,69 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  RefObject,
-  useTransition,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  initiallyInView?: boolean;
+  initialInView?: boolean;
   getContainerElement?: () => HTMLElement | null;
   once?: boolean;
   threshold?: number;
   margin?: string;
-  onInViewChange?: (isInView: boolean) => void;
+  onChange?: (intersecting: boolean) => void;
 }
 
 export type InViewProps = Props;
 
 export const useInView = <T extends Element | null = HTMLElement>({
-  getContainerElement,
   once = false,
   threshold = 0,
   margin = "0px",
-  onInViewChange,
-  initiallyInView = false,
-}: Props): [targetRef: RefObject<T | null>, isInView: boolean] => {
-  const [isInView, setIsInView] = useState(initiallyInView);
+  getContainerElement,
+  onChange,
+  initialInView = false,
+}: Props) => {
+  const [inView, setInView] = useState(initialInView);
+  const observerRef = useRef<IntersectionObserver | null>(null);
   const targetRef = useRef<T | null>(null);
-  const [, setTransition] = useTransition();
-  const onChangeRef = useRef(onInViewChange);
-  onChangeRef.current = onInViewChange;
+  const inViewRef = useRef(inView);
+
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
   const getContainerRef = useRef(getContainerElement);
   getContainerRef.current = getContainerElement;
 
-  const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      const { isIntersecting } = entries[0];
-      setIsInView((isInView) => {
-        if (isIntersecting === isInView) return isIntersecting;
-        if (once && isIntersecting) {
-          observer.disconnect();
-        }
-        return isIntersecting;
-      });
-      setTransition(() => {
-        onChangeRef.current?.(isIntersecting);
-      });
-    },
-    [once]
-  );
+  const shouldRunOnce = once && inView;
 
   useEffect(() => {
+    if (shouldRunOnce) {
+      observerRef.current?.disconnect();
+    }
+  }, [shouldRunOnce]);
+
+  useEffect(() => {
+    const target = targetRef.current;
+    if (!target) return;
+
     const observerOptions: IntersectionObserverInit = {
       root: getContainerRef.current?.(),
       rootMargin: margin,
       threshold,
     };
 
+    const handleObserver = (entries: IntersectionObserverEntry[]) => {
+      const { isIntersecting } = entries[0];
+      if (inViewRef.current === isIntersecting) return;
+
+      inViewRef.current = isIntersecting;
+      setInView(isIntersecting);
+      onChangeRef.current?.(isIntersecting);
+    };
+
     const observer = new IntersectionObserver(handleObserver, observerOptions);
+    observerRef.current = observer;
+    observer.observe(target);
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [threshold, margin]);
 
-    return () => observer?.disconnect();
-  }, [margin, threshold, handleObserver]);
-
-  return [targetRef, isInView];
+  return [targetRef, inView] as const;
 };

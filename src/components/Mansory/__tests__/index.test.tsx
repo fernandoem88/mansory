@@ -5,7 +5,7 @@ import { MOCK_PHOTOS } from "../constants/__mock__";
 import { useInView } from "@/hooks/useInView";
 
 jest.mock("@/hooks/useInView", () => ({
-  useInView: jest.fn().mockReturnValue([{ current: null }, true]),
+  useInView: jest.fn(),
 }));
 
 const mockUseInView = useInView as jest.MockedFunction<typeof useInView>;

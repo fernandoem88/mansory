@@ -6,13 +6,13 @@ import { getDefaultPhotoSrc } from "@/lib/utils/getDefaultPhotoSrc";
 interface Props {
   getContainerElement: () => HTMLElement | null;
   photo: PhotoItem;
-  onClick?: () => void;
+  onClick?: (photo: PhotoItem) => void;
 }
 
 export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
   const [ref, inView] = useInView<HTMLLIElement>({
     getContainerElement,
-    margin: "50px 0px",
+    margin: "25px 0px",
   });
   const { alt, width, height, src } = photo;
   const aspectRatio = +(width / height).toFixed(2);
@@ -27,7 +27,7 @@ export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
       data-testid="mansory-card"
     >
       {inView && (
-        <CardButton onClick={onClick}>
+        <CardButton onClick={() => onClick?.(photo)}>
           <Img
             alt={alt}
             src={getDefaultPhotoSrc(src)}
