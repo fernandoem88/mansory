@@ -64,7 +64,7 @@ export const Mansory = ({
           {photos.map((photo, index) => {
             return (
               <GalleryItem
-                key={photo.id + index}
+                key={`${photo.id}_${index}`}
                 photo={photo}
                 getContainerElement={() => ref.current}
                 onClick={() => onOpenDetails(photo)}

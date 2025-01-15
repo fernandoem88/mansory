@@ -12,8 +12,9 @@ export const Card = styled.li<{
   margin-bottom: 8px;
   border-radius: 8px;
   overflow: hidden;
+
   ${(p) => `aspect-ratio: ${p.$aspectRatio};`}
-  ${(p) => `grid-row: span ${p.$rowSpan};`};
+  ${(p) => `grid-row: span ${p.$rowSpan};`}
 
   background-image: ${({ $bgSrc }) => {
     if ($bgSrc) return `url(${$bgSrc})`;
