@@ -56,7 +56,7 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
   ```js
   width / height;
   ```
-  - The `reverseAspectRatio` is calculated as:
+  - The `reverseAspectRatio`, as we can see [here](src/components/GalleryItem/index.tsx#25) is calculated as:
     ```js
     Math.ceil(height / width) * offset;
     ```
@@ -110,6 +110,13 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 ### **Infinite Scroll**
 
 - Additional cards are fetched and rendered seamlessly as the user scrolls, ensuring a continuous browsing experience.
+
+## **Tests**
+
+some tests can be found here
+
+- [Mansory Gallery](src/components/Mansory/__tests__/index.test.tsx)
+- [Search Filter](src/components/SearchFilter/__tests__/index.test.tsx)
 
 ---
 
