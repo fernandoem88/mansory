@@ -2,7 +2,7 @@
 
 # Masonry Project with CSS Grid
 
-This project demonstrates a dynamic masonry layout built using **CSS Grid**. It features responsive grid columns, aspect ratio-based card sizing, lazy loading, infinite scroll, virtualization, and more. Powered by the **Pexels API**.
+This project demonstrates a dynamic masonry layout built using **CSS Grid**. It features responsive grid columns, aspect ratio-based card sizing, lazy loading, infinite scroll, virtualization, and more.
 
 ---
 
