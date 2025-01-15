@@ -33,7 +33,7 @@ export const ImgWrapper = styled.div<{ $aspectRatio: number; $bgSrc: string }>`
   background-image: ${(p) => `url(${p.$bgSrc})`};
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 8;
+  border-radius: 8px;
   overflow: hidden;
 `;
 
