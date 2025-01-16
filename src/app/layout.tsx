@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 interface Props {
   children: ReactNode;
-  photoModal?: ReactNode;
+  photoModal: ReactNode;
 }
 
 export default function RootLayout({ children, photoModal }: Props) {
