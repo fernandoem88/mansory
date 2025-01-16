@@ -12,7 +12,7 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 
 1. **Pexels API Key**
 
-   - Create an API key on [Pexels](https://www.pexels.com/).
+   - Create an API key on [Pexels](https://www.pexels.com/api/).
    - Save your API key in a `.env.local` file as follows:
 
    ```env
@@ -76,10 +76,11 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 
 ### 4. **On-Card Click (Modal View)**
 
-- Clicking a card opens a **modal** displaying the card's details.
-- To optimize performance:
-  - Content inside the modal is **lazy-loaded**.
-  - A low-resolution image (already loaded) serves as the background while the high-resolution image loads, creating a smooth transition.
+- Clicking a card opens a **modal** that displays the card's details.
+- The modal acts as an intermediary view before navigating to the final route: `/photos/[photoId]`.
+- To complete the transition, click the picture within the modal to proceed to the final route.
+- Alternatively, you can close the modal and continue scrolling.
+- A low-resolution image (preloaded) serves as the background image in the modal while the high-resolution image loads, ensuring a smooth visual experience.
 
 ### 5. **Lazy Loading**
 
