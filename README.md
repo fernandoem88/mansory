@@ -26,21 +26,28 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
    npm install
    ```
 
-3. **Build the Project**  
+3. **Install Dependencies**  
+   Run the following command to test the project:
+
+   ```bash
+   npm run test
+   ```
+
+4. **Build the Project**  
    Build the project with:
 
    ```bash
    npm run build
    ```
 
-4. **Start the Application**  
+5. **Start the Application**  
    Start the application locally:
 
    ```bash
    npm run start
    ```
 
-5. **View in Browser**  
+6. **View in Browser**  
    Open [http://localhost:3000](http://localhost:3000) in your browser to see the app in action.
 
 ---
@@ -117,6 +124,7 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
 some tests can be found here
 
 - [Mansory Gallery](src/components/Mansory/__tests__/index.test.tsx)
+- [Gallery Item](src/components/GalleryItem/__tests__/indext.test.tsx)
 - [Search Filter](src/components/SearchFilter/__tests__/index.test.tsx)
 
 ---
