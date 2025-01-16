@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ForwardedRef,
   forwardRef,
@@ -7,6 +9,7 @@ import {
 import { type ButtonRootProps, Root } from "./styled";
 
 interface Props extends ButtonRootProps {
+  href?: string;
   noElevation?: boolean;
   children: ReactNode;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;

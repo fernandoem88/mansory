@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/styled-components-registry";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Mansory app",
@@ -9,16 +10,18 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
+  photoModal?: ReactNode;
 }
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children, photoModal }: Props) {
   return (
     <html lang="en">
       <link rel="preconnect" href="https://images.pexels.com"></link>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <div id="modal-root" />
+        {photoModal}
       </body>
     </html>
   );

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
-  /* padding: 16px; */
-  min-height: 120px;
+  background-color: white;
   overflow-y: auto;
   grid-area: modal-content;
 `;

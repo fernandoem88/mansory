@@ -6,7 +6,7 @@ import { Backdrop, ModalDialog } from "./styled";
 
 interface Props {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: ReactNode;
 }
 
@@ -23,7 +23,7 @@ export const UiModalPaper = ({ open, onClose, children }: Props) => {
           if (!isTarget) return;
 
           target.removeAttribute("data-mouse");
-          onClose();
+          onClose?.();
         }}
       >
         <ModalDialog open={open} onMouseDown={(e) => e.stopPropagation()}>
