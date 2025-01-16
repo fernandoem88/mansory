@@ -19,9 +19,11 @@ export default function RootLayout({ children, photoModal }: Props) {
     <html lang="en">
       <link rel="preconnect" href="https://images.pexels.com"></link>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        <div id="modal-root" />
-        {photoModal}
+        <StyledComponentsRegistry>
+          {children}
+          <div id="modal-root" />
+          {photoModal}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

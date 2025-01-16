@@ -14,6 +14,10 @@ export const doGetPhotoById = async (photoId: string) => {
     },
   });
 
+  if (!response.ok) {
+    return null;
+  }
+
   const data = await response.json();
 
   if ("code" in data) {

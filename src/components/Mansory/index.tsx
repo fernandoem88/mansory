@@ -30,7 +30,11 @@ export const Mansory = ({
     <Container ref={ref}>
       {isMessageShown && (
         <MessageText>
-          {isLoading ? "Please wait..." : error ? error : "no data found!"}
+          {isLoading
+            ? "Please wait..."
+            : error
+            ? "Something went wrong"
+            : "no data found!"}
         </MessageText>
       )}
       {!isMessageShown && (

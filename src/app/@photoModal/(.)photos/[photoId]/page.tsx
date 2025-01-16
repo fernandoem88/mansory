@@ -10,9 +10,10 @@ export default async function ModalPhotoPage({ params }: Props) {
   if (!params) return null;
   const { photoId } = await params;
   const photo = await doGetPhotoById(photoId);
+
   return (
     <UiModalPaper open={!!photoId}>
-      <PhotoDetailsContainer photo={photo} />
+      <PhotoDetailsContainer photo={photo} isModal />
     </UiModalPaper>
   );
 }
