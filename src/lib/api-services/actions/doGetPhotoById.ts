@@ -8,9 +8,9 @@ const BASE_URL = "https://api.pexels.com/v1/photos";
 export const doGetPhotoById = async (photoId: string) => {
   const url = `${BASE_URL}/${photoId}`;
   const response = await fetch(url, {
+    next: { revalidate: 30 * 60 }, // every 30 minutes
     headers: {
       Authorization: `${API_KEY}`,
-      "Content-Type": "application/json",
     },
   });
 

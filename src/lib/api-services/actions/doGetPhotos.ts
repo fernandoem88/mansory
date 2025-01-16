@@ -24,6 +24,7 @@ export const doGetPhotos = async ({
 
   const url = `${BASE_URL}?${search.toString()}`;
   const response = await fetch(url, {
+    next: { revalidate: 3 * 60 }, // every 3 minutes
     headers: {
       Authorization: `${API_KEY}`,
     },
