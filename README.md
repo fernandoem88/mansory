@@ -26,7 +26,7 @@ This project demonstrates a dynamic masonry layout built using **CSS Grid**. It 
    npm install
    ```
 
-3. **Install Dependencies**  
+3. **Run The Tests**  
    Run the following command to test the project:
 
    ```bash
