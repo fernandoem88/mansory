@@ -6,10 +6,9 @@ import { getDefaultPhotoSrc } from "@/lib/utils/getDefaultPhotoSrc";
 interface Props {
   getContainerElement: () => HTMLElement | null;
   photo: PhotoItem;
-  onClick?: (photo: PhotoItem) => void;
 }
 
-export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
+export const GalleryItem = ({ photo, getContainerElement }: Props) => {
   const [ref, inView] = useInView<HTMLLIElement>({
     getContainerElement,
     margin: "25px 0px",
@@ -27,7 +26,7 @@ export const GalleryItem = ({ photo, getContainerElement, onClick }: Props) => {
       data-testid="mansory-card"
     >
       {inView && (
-        <CardButton onClick={() => onClick?.(photo)}>
+        <CardButton href={`/photos/${photo.id}`}>
           <Img
             alt={alt}
             src={getDefaultPhotoSrc(src)}

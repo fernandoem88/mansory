@@ -1,4 +1,5 @@
 import { BREAK_POINTS } from "@/lib/theme";
+import Link from "next/link";
 import styled, { css } from "styled-components";
 
 export const Card = styled.li<{
@@ -31,7 +32,7 @@ export const Card = styled.li<{
   } */
 `;
 
-export const CardButton = styled.button`
+export const CardButton = styled(Link)`
   width: 100%;
   height: 100%;
   flex: 1;

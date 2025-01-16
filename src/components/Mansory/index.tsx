@@ -8,14 +8,12 @@ interface Props {
   isLoading?: boolean;
   error?: string;
   photos: PhotoItem[];
-  onOpenDetails: (photo: PhotoItem) => void;
   onLoadMore?: () => void;
   hasMorePages?: boolean;
 }
 
 export const Mansory = ({
   photos,
-  onOpenDetails,
   isLoading,
   error,
   onLoadMore,
@@ -43,7 +41,6 @@ export const Mansory = ({
                 key={`${photo.id}_${index}`}
                 photo={photo}
                 getContainerElement={getContainer}
-                onClick={onOpenDetails}
               />
             );
           })}
