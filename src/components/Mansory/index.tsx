@@ -20,7 +20,6 @@ export const Mansory = ({
   hasMorePages,
 }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const galleryRef = useRef<HTMLUListElement | null>(null);
   const noItems = !photos.length;
   const isMessageShown = isLoading || !!error || noItems;
 
@@ -38,16 +37,14 @@ export const Mansory = ({
         </MessageText>
       )}
       {!isMessageShown && (
-        <Gallery ref={galleryRef}>
-          {photos.map((photo, index) => {
-            return (
-              <GalleryItem
-                key={`${photo.id}_${index}`}
-                photo={photo}
-                getContainerElement={getContainer}
-              />
-            );
-          })}
+        <Gallery>
+          {photos.map((photo, index) => (
+            <GalleryItem
+              key={`${photo.id}_${index}`}
+              photo={photo}
+              getContainerElement={getContainer}
+            />
+          ))}
           {hasMorePages && !isLoading && (
             <LoadMore getContainerElement={getContainer} onClick={onLoadMore} />
           )}
